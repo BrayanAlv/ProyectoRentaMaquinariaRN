@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, View } from 'react-native';
-import Cartas from './Cartas'; // Asegúrate de que la ruta sea correcta
+import Cartas from './Cartas'; 
 
 const MachineList = () => {
   const [maquina, setMaquina] = useState([]);
@@ -8,7 +8,7 @@ const MachineList = () => {
   useEffect(() => {
     const obtenerDatos = async () => {
       try {
-        const res = await fetch("http://192.168.100.79:80/apiMachine/index.php");
+        const res = await fetch("http://192.168.3.120:80/apiMachine/index.php");
         const data = await res.json();
         setMaquina(data);
       } catch (error) {
@@ -28,6 +28,7 @@ const MachineList = () => {
           precioPorDia={item.precioDia}
           imageFileName={item.imagen}
           capacidad={item.capacidad}
+          code={item.codigo}
         />
       </View>
     ));

@@ -1,27 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { Card, Button } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
 
-const Cartas = ({ marca, modelo, precioPorDia, imageFileName, capacidad }) => (
-  <Card>
-    <Card.Cover style={styles.img} source={{ uri: `../assets/images/${imageFileName}` }}  />
-    <Card.Content>
-      <View style={styles.contentContainer}>
-        <View style={styles.textContainer}>
-          <Text style={styles.title}>Marcar: {marca}</Text>
-          <Text style={styles.subtitle}>Modelo: {modelo}</Text>
-          <Text style={styles.subtitle}>Capacidad de carga: {capacidad} kg</Text>
-          <Text style={styles.subtitle}>Precio por dia: {precioPorDia}</Text>
+const Cartas = ({ marca, modelo, precioPorDia, imageFileName, capacidad, code }) => {
+  const navigation = useNavigation();
 
+  return (
+    <Card>
+      <Card.Cover style={styles.img} source={{ uri: imageFileName }} />
 
+      <Card.Content>
+        <View style={styles.contentContainer}>
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>Marca: {marca}</Text>
+            <Text style={styles.subtitle}>Modelo: {modelo}</Text>
+            <Text style={styles.subtitle}>Capacidad de carga: {capacidad} kg</Text>
+            <Text style={styles.subtitle}>Precio por dia: {precioPorDia}</Text>
+          </View>
+          <Button
+            icon="plus"
+            mode="contained"
+            onPress={() => navigation.navigate('Detail', { code })}
+            style={styles.button}>
+            Ver
+          </Button>
         </View>
-        <Button icon="plus" mode="contained" onPress={() => console.log('Pressed')} style={styles.button}>
-          Ver más
-        </Button>
-      </View>
-    </Card.Content>
-  </Card>
-);
+      </Card.Content>
+    </Card>
+  );
+};
 
 export default Cartas;
 

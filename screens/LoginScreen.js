@@ -35,7 +35,7 @@ const LoginScreen = ({ navigation }) => {
 
   const handleLogin = async () => {
     
-    navigation.navigate('Home');
+    navigation.navigate('Main');
       
   };
 
