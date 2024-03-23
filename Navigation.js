@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // Importa tus componentes de pantalla
+import ShoppingCartScreen from './screens/ShoppingCartScreen';
 import LoginScreen from './screens/LoginScreen'; // Asegúrate de que esta pantalla exista en tu directorio
 import HomeScreen from "./screens/HomeScreen"; 
 import SettingScreen from "./screens/SettingScreen";
@@ -35,28 +36,43 @@ function MyTabs() {
                     let iconName;
                     if (route.name === 'Home') {
                         iconName = focused ? 'home' : 'home-outline';
+                    } else if (route.name === 'ShoppingCart') {
+                        iconName = focused ? 'cart' : 'cart-outline';
                     } else if (route.name === 'Settings') {
                         iconName = focused ? 'settings' : 'settings-outline';
                     }
+                    // Return the icon component
                     return <Ionicons name={iconName} size={size} color={color} />;
                 },
-                tabBarActiveTintColor: 'purple',
+                tabBarActiveTintColor: '#EFD316',
                 tabBarInactiveTintColor: 'gray',
             })}
         >
+            {/* Pestaña de Inicio */}
             <Tab.Screen 
                 name="Home" 
                 component={MyStack}
-                options={{ tabBarLabel: "Feed", headerShown: false }}
+                options={{ tabBarLabel: "Inicio", headerShown: false }}
             />
+            {/* Pestaña del Carrito de Compras */}
+            <Tab.Screen 
+                name="ShoppingCart" 
+                component={ShoppingCartScreen}
+                options={{
+                    tabBarLabel: 'Carrito',
+                    headerShown: false, // or true, depending on your need
+                }}
+            />
+            {/* Pestaña de Configuración */}
             <Tab.Screen 
                 name="Settings" 
                 component={SettingScreen}
+                options={{ tabBarLabel: "Configuración" }}
             />
         </Tab.Navigator>
     );
-}
-
+  }
+  
 // Contenedor principal de navegación
 export default function Navigation() {
     return (
