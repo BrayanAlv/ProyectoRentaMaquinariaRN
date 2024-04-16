@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Modal, Button } from 'react-native';
 import MachineList from '../components/MachineList';
 import { BsSearch } from "react-icons/bs"
+import { apiURL } from '../api/apiGlobal';
+
 
 const HomeScreen = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -17,7 +19,7 @@ const HomeScreen = () => {
       if(searchQuery == " ") {
         try {
           console.log(filterOpt, "jeej")
-          const res = await fetch("http://localhost/apiFiltradoMaquinas/index.php");
+          const res = await fetch(`${apiURL}/apiFiltradoMaquinas/index.php`);
           const apiData = await res.json();
           setData(apiData)
           setIsWrong(false)
@@ -27,7 +29,7 @@ const HomeScreen = () => {
       } else {
         try {
           console.log(filterOpt, "waja")
-          const res = await fetch(`http://localhost/apiFiltradoMaquinas/index.php?${filterOpt}=${searchQuery.replace(/\s+/g, '')}`);
+          const res = await fetch(`${apiURL}/apiFiltradoMaquinas/index.php?${filterOpt}=${searchQuery.replace(/\s+/g, '')}`);
           const apiData = await res.json();
           if (apiData.error) {
             setIsWrong(true)
@@ -67,7 +69,7 @@ const HomeScreen = () => {
           ref = {inputSearch}
         />
 
-        <Button color= "#efd316" title = {<BsSearch />} onPress={handleClick}/>
+        <Button color= "#efd316" title =  "butonjaja" onPress={handleClick}/>
 
         
       </View>
