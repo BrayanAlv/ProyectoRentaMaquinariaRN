@@ -12,7 +12,7 @@ import SettingScreen from "./screens/SettingScreen";
 import StackScreen from './screens/StackScreen'; 
 import AddNewUser from './screens/AddNewUser'
 import AddReserva from './screens/AddReserva';
-
+import seguimiento from './screens/seguimiento';
 import Detail from './screens/Detail';
 
 const Tab = createBottomTabNavigator();
@@ -88,6 +88,7 @@ export default function Navigation() {
                 <Stack.Screen name="Detail" component={Detail} />
                 <Stack.Screen name="AddUser" component={AddNewUser} />
                 <Stack.Screen name="FormReserva" component={AddReserva} />
+                <Stack.Screen name="seguimiento" component={seguimiento} />
             </Stack.Navigator>
         </NavigationContainer>
     );

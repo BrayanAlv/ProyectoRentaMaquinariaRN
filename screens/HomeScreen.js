@@ -28,7 +28,7 @@ const HomeScreen = () => {
         }
       } else {
         try {
-          console.log(filterOpt, "waja")
+          //console.log(filterOpt, "waja")
           const res = await fetch(`${apiURL}/apiFiltradoMaquinas/index.php?${filterOpt}=${searchQuery.replace(/\s+/g, '')}`);
           const apiData = await res.json();
           if (apiData.error) {
