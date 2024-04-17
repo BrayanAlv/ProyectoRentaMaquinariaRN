@@ -64,12 +64,12 @@ const HomeScreen = () => {
           style={styles.searchBox}
           onChangeText={setSearchQuery}
           value={searchQuery}
-          placeholder="Buscar por marca"
+          placeholder="Buscar"
           placeholderTextColor={"gray"}
           ref = {inputSearch}
         />
 
-        <Button color= "#efd316" title =  "butonjaja" onPress={handleClick}/>
+        <Button color= "#efd316" title =  "Buscar" onPress={handleClick}/>
 
         
       </View>

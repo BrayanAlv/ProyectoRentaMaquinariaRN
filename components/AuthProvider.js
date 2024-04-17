@@ -8,9 +8,9 @@ const AuthContext = createContext();
 const initialState = {
   isAuthenticated: false,
   token: null,
-  email: null, // Add email to the initial state
-  nn: null, // Add nn to the initial state
-  idCl: null // Add idCl to the initial state
+  email: null, 
+  nn: null, 
+  idCl: null 
 };
 
 const authReducer = (state, action) => {
@@ -39,22 +39,20 @@ export const AuthProvider = ({ children }) => {
   const login = async (username, password) => {
     try {
       const { token, email, nn, idCl } = await apiLogin(username, password);
-      // Store the token, email, nn, and idCl in localStorage or AsyncStorage
-      // Here, I'm using AsyncStorage since you're working with React Native
+      
       await AsyncStorage.setItem('token', token);
       await AsyncStorage.setItem('email', email);
       await AsyncStorage.setItem('nn', nn);
       await AsyncStorage.setItem('idCl', idCl);
       dispatch({ type: 'LOGIN', payload: { token, email, nn, idCl } });
     } catch (error) {
-      // Handle login error
+      
       console.error('Login failed:', error.message);
       throw error;
     }
   };
 
   const logout = async () => {
-    // Remove token, email, nn, and idCl from AsyncStorage
     await AsyncStorage.removeItem('token');
     await AsyncStorage.removeItem('email');
     await AsyncStorage.removeItem('nn');

@@ -6,6 +6,7 @@ const SettingScreen = ({ navigation }) => {
   const { logout, nn , idCl} = useAuth(); // Usando useAuth para acceder a logout y nn (nickname)
 
   function usuarioAvatar(str) {
+    if (!str) return ""; 
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 
